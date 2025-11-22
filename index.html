@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyRent - Find Your Perfect Home in Egypt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>EasyRent</span>
+                </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#search" class="nav-link">Search</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#register" class="nav-link auth-link" id="register-link">Register</a>
+                <a href="#user-login" class="btn btn-primary btn-sm nav-link auth-link" id="login-link">Login</a>
+                <div class="profile-menu" id="profile-menu" style="display: none;">
+                    <button class="profile-icon" id="profile-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#search" class="mobile-link">Search</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#register" class="mobile-link auth-link">Register</a>
+        <a href="#user-login" class="btn btn-primary btn-sm mobile-link auth-link">Login</a>
+        <div class="mobile-profile-section" id="mobile-profile-section" style="display: none;">
+            <div class="mobile-profile-icon" id="mobile-profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <a href="#" class="mobile-link" onclick="handleLogout(); return false;">Logout</a>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Find Your Perfect Home in Egypt</h1>
+                    <p class="hero-subtitle">Discover the best rental properties across Cairo, Alexandria, and beyond</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-card">
+                        <div class="search-form">
+                            <div class="search-field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="Location (Cairo, Giza, Alexandria...)" id="searchLocation">
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="text" placeholder="Max Price (EGP)" id="searchPrice">
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-bed"></i>
+                                <select id="searchRooms">
+                                    <option value="">Bedrooms</option>
+                                    <option value="1">1 Bedroom</option>
+                                    <option value="2">2 Bedrooms</option>
+                                    <option value="3">3 Bedrooms</option>
+                                    <option value="4">4+ Bedrooms</option>
+                                </select>
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-building"></i>
+                                <select id="searchType">
+                                    <option value="">Property Type</option>
+                                    <option value="apartment">Apartment</option>
+                                    <option value="villa">Villa</option>
+                                    <option value="studio">Studio</option>
+                                    <option value="penthouse">Penthouse</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary search-btn" onclick="goToSearch()">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Properties -->
+        <div class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Properties</h2>
+                    <p>Handpicked properties for you</p>
+                </div>
+                
+                <div class="properties-grid">
+                    <!-- Property Card 1 -->
+                    <div class="property-card" onclick="goToProperty(1)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600" alt="Luxury Apartment">
+                            <div class="property-badge">Featured</div>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">12,000 EGP/month</div>
+                            <h3 class="property-title">Modern Apartment in Zamalek</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Zamalek, Cairo
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 150 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 2 -->
+                    <div class="property-card" onclick="goToProperty(2)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt="Cozy Studio">
+                            <div class="property-badge featured">Featured</div>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">6,500 EGP/month</div>
+                            <h3 class="property-title">Cozy Studio in Maadi</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Maadi, Cairo
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 1 Bed</span>
+                                <span><i class="fas fa-bath"></i> 1 Bath</span>
+                                <span><i class="fas fa-ruler-combined"></i> 65 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 3 -->
+                    <div class="property-card" onclick="goToProperty(3)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600" alt="Spacious Villa">
+                            <div class="property-badge">New</div>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">25,000 EGP/month</div>
+                            <h3 class="property-title">Spacious Villa in New Cairo</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                New Cairo, Cairo
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                <span><i class="fas fa-bath"></i> 3 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 300 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 4 -->
+                    <div class="property-card" onclick="goToProperty(4)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=600" alt="Elegant Penthouse">
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">18,000 EGP/month</div>
+                            <h3 class="property-title">Elegant Penthouse in Giza</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Mohandessin, Giza
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 180 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 5 -->
+                    <div class="property-card" onclick="goToProperty(5)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=600" alt="Beach Apartment">
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">15,000 EGP/month</div>
+                            <h3 class="property-title">Beach View Apartment</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Sidi Gaber, Alexandria
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 2 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 120 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 6 -->
+                    <div class="property-card" onclick="goToProperty(6)">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt="Modern Studio">
+                        </div>
+                        <div class="property-content">
+                            <div class="property-price">8,000 EGP/month</div>
+                            <h3 class="property-title">Modern Studio in New Capital</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                New Administrative Capital
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 1 Bed</span>
+                                <span><i class="fas fa-bath"></i> 1 Bath</span>
+                                <span><i class="fas fa-ruler-combined"></i> 70 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline" onclick="goToSearch()">View All Properties</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Find Your Dream Home?</h2>
+                    <p>Join thousands of satisfied tenants who found their perfect rental through EasyRent</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="goToSearch()">Start Searching</button>
+                        <button class="btn btn-outline btn-lg" onclick="showPage('contact')">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <div class="section about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About EasyRent</h2>
+                    <p>EasyRent is Egypt's premier property rental platform, connecting landlords with quality tenants since 2020. We believe everyone deserves a perfect home, and we're here to make that search as easy as possible.</p>
+                    
+                    <p>Our mission is to revolutionize the rental experience in Egypt by providing a transparent, efficient, and user-friendly platform. We carefully vet all properties and provide comprehensive support throughout your rental journey.</p>
+                    
+                    <p>With thousands of verified listings across Cairo, Alexandria, Giza, and beyond, we're committed to helping you find not just a house, but a home.</p>
+
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Verified Properties</h3>
+                            <p>All listings are verified and inspected to ensure quality and authenticity</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-headset"></i>
+                            <h3>24/7 Support</h3>
+                            <p>Our dedicated team is always ready to assist you with any questions</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h3>Best Prices</h3>
+                            <p>Competitive pricing with no hidden fees or commissions</p>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-search"></i>
+                            <h3>Easy Search</h3>
+                            <p>Advanced filters to help you find exactly what you're looking for</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="section contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-form-wrapper">
+                        <h2>Get In Touch</h2>
+                        
+                        <div class="contact-info-cards">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>+201110511819</p>
+                            </div>
+                        </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>info@easyrent.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <p>Cairo, Egypt</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="auth-form" onsubmit="submitContact(event)">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="01XXXXXXXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" class="form-control" placeholder="How can we help?" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea class="form-control" rows="5" placeholder="Tell us more..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Page -->
+    <section id="search" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Search Properties</h1>
+                <p>Found 24 properties matching your criteria</p>
+            </div>
+
+            <div class="search-layout">
+                <!-- Sidebar Filters -->
+                <aside class="search-sidebar">
+                    <div class="filter-card">
+                        <h3>Filters</h3>
+                        
+                        <div class="filter-group">
+                            <label>Location</label>
+                            <select class="form-control">
+                                <option value="">All Locations</option>
+                                <option value="cairo">Cairo</option>
+                                <option value="giza">Giza</option>
+                                <option value="alexandria">Alexandria</option>
+                                <option value="mansoura">Mansoura</option>
+                                <option value="new-capital">New Capital</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Price Range (EGP)</label>
+                            <div class="price-inputs">
+                                <input type="number" placeholder="Min" class="form-control">
+                                <span>-</span>
+                                <input type="number" placeholder="Max" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Bedrooms</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox"> 1 Bedroom</label>
+                                <label><input type="checkbox"> 2 Bedrooms</label>
+                                <label><input type="checkbox"> 3 Bedrooms</label>
+                                <label><input type="checkbox"> 4+ Bedrooms</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Property Type</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox"> Apartment</label>
+                                <label><input type="checkbox"> Villa</label>
+                                <label><input type="checkbox"> Studio</label>
+                                <label><input type="checkbox"> Penthouse</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Amenities</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox"> Parking</label>
+                                <label><input type="checkbox"> Balcony</label>
+                                <label><input type="checkbox"> Elevator</label>
+                                <label><input type="checkbox"> Garden</label>
+                                <label><input type="checkbox"> Security</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block">Apply Filters</button>
+                        <button class="btn btn-outline btn-block">Reset</button>
+                    </div>
+                </aside>
+
+                <!-- Search Results -->
+                <div class="search-results">
+                    <div class="results-header">
+                        <span>24 properties found</span>
+                        <select class="form-control sort-select">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest First</option>
+                        </select>
+                    </div>
+
+                    <div class="results-grid">
+                        <!-- Result Cards (same as featured properties) -->
+                        <div class="property-card" onclick="goToProperty(1)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600" alt="Property">
+                                <div class="property-badge">Featured</div>
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">12,000 EGP/month</div>
+                                <h3 class="property-title">Modern Apartment in Zamalek</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Zamalek, Cairo
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 150 m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="property-card" onclick="goToProperty(2)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt="Property">
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">6,500 EGP/month</div>
+                                <h3 class="property-title">Cozy Studio in Maadi</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Maadi, Cairo
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 1 Bed</span>
+                                    <span><i class="fas fa-bath"></i> 1 Bath</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 65 m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="property-card" onclick="goToProperty(3)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600" alt="Property">
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">25,000 EGP/month</div>
+                                <h3 class="property-title">Spacious Villa in New Cairo</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    New Cairo, Cairo
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 3 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 300 m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="property-card" onclick="goToProperty(4)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=600" alt="Property">
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">18,000 EGP/month</div>
+                                <h3 class="property-title">Elegant Penthouse in Giza</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Mohandessin, Giza
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 180 m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="property-card" onclick="goToProperty(5)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=600" alt="Property">
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">15,000 EGP/month</div>
+                                <h3 class="property-title">Beach View Apartment</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Sidi Gaber, Alexandria
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 2 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 120 m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="property-card" onclick="goToProperty(6)">
+                            <div class="property-image">
+                                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt="Property">
+                            </div>
+                            <div class="property-content">
+                                <div class="property-price">8,000 EGP/month</div>
+                                <h3 class="property-title">Modern Studio in New Capital</h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    New Administrative Capital
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 1 Bed</span>
+                                    <span><i class="fas fa-bath"></i> 1 Bath</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 70 m²</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details Page -->
+    <section id="property-details" class="page">
+        <div class="container">
+            <button class="btn btn-text mb-3" onclick="goToSearch()">
+                <i class="fas fa-arrow-left"></i> Back to Search
+            </button>
+
+            <!-- Image Gallery -->
+            <div class="gallery">
+                <div class="gallery-main">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200" alt="Main Image" id="mainImage">
+                </div>
+                <div class="gallery-grid">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400" alt="Gallery Image" onclick="changeMainImage(this)">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" alt="Gallery Image" onclick="changeMainImage(this)">
+                    <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=400" alt="Gallery Image" onclick="changeMainImage(this)">
+                    <img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=400" alt="Gallery Image" onclick="changeMainImage(this)">
+                </div>
+            </div>
+
+            <div class="property-details-layout">
+                <!-- Property Info -->
+                <div class="property-details-main">
+                    <div class="details-header">
+                        <div>
+                            <h1>Modern Apartment in Zamalek</h1>
+                            <p class="location-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                                26th of July Street, Zamalek, Cairo
+                            </p>
+                        </div>
+                        <div class="price-tag">12,000 EGP/month</div>
+                    </div>
+
+                    <div class="property-stats">
+                        <div class="stat">
+                            <i class="fas fa-bed"></i>
+                            <div>
+                                <strong>3</strong>
+                                <span>Bedrooms</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-bath"></i>
+                            <div>
+                                <strong>2</strong>
+                                <span>Bathrooms</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-ruler-combined"></i>
+                            <div>
+                                <strong>150</strong>
+                                <span>Square Meters</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-couch"></i>
+                            <div>
+                                <strong>Furnished</strong>
+                                <span>Condition</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h2>Description</h2>
+                        <p>This stunning modern apartment in the heart of Zamalek offers a perfect blend of comfort and luxury. With 3 spacious bedrooms and 2 modern bathrooms, this property is ideal for families or professionals seeking a premium living experience in Cairo.</p>
+                        <p>The apartment features high-end finishes throughout, including marble flooring, modern kitchen appliances, and central air conditioning. Large windows provide abundant natural light and offer beautiful views of the surrounding neighborhood.</p>
+                        <p>Located in one of Cairo's most prestigious areas, you'll have easy access to restaurants, cafes, shopping centers, and the Nile Corniche. The building includes 24/7 security and a private parking space.</p>
+                    </div>
+
+                    <div class="details-section">
+                        <h2>Amenities</h2>
+                        <div class="amenities-grid">
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Air Conditioning</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Balcony</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Parking</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevator</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Security</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Internet Ready</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Modern Kitchen</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Gym Access</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h2>Location</h2>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>26th of July Street, Zamalek, Cairo, Egypt</p>
+                            <span class="map-note">Interactive map would be integrated here</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inquiry Sidebar -->
+                <aside class="inquiry-sidebar">
+                    <div class="inquiry-card">
+                        <h3>Interested in this property?</h3>
+                        <p class="contact-phone">
+                            <i class="fas fa-phone"></i>
+                            Call us: +201110511819
+                        </p>
+                        
+                        <button class="btn btn-primary btn-block mb-2" onclick="showViewingModal()">
+                            <i class="fas fa-calendar"></i>
+                            Request Viewing
+                        </button>
+                        <button class="btn btn-outline btn-block" onclick="showInquiryModal()">
+                            <i class="fas fa-envelope"></i>
+                            Send Inquiry
+                        </button>
+
+                        <div class="divider"></div>
+
+                        <div class="property-id">
+                            <strong>Property ID:</strong> ER-12345
+                        </div>
+                        <div class="posted-date">
+                            <strong>Posted:</strong> 3 days ago
+                        </div>
+                    </div>
+
+                    <div class="inquiry-card">
+                        <h3>Share This Property</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn">
+                                <i class="fab fa-facebook"></i>
+                            </button>
+                            <button class="share-btn">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="share-btn">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="share-btn">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Login Page -->
+    <section id="user-login" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-user"></i>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your EasyRent account</p>
+                </div>
+                <form class="auth-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                    <div class="auth-divider">
+                        <span>Don't have an account?</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-block" onclick="showPage('register')">Create Account</button>
+                    <div class="auth-divider">
+                        <span>Or</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-block admin-login-btn" onclick="showPage('admin-login')">
+                        <i class="fas fa-shield-alt"></i>
+                        Admin Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Page -->
+    <section id="register" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Create Account</h2>
+                    <p>Join EasyRent and find your perfect home</p>
+                </div>
+                <form class="auth-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" id="registerName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" id="registerPhone" placeholder="01XXXXXXXXX" value="+20xxxxxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the Terms & Conditions</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <div class="auth-divider">
+                        <span>Already have an account?</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-block" onclick="showPage('user-login')">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Admin Login Page -->
+    <section id="admin-login" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Admin Login</h2>
+                    <p>Access the administrative dashboard</p>
+                </div>
+                <form class="auth-form" onsubmit="handleAdminLogin(event)">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>This area is restricted to authorized administrators only.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Admin Email</label>
+                        <input type="email" class="form-control" id="adminEmail" placeholder="admin@easyrent.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Admin Password</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Enter admin password" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="adminRemember">
+                        <label for="adminRemember">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login as Admin
+                    </button>
+                    <div class="auth-divider">
+                        <span>Or</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-block" onclick="showPage('user-login')">
+                        Back to User Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard" class="page admin-page">
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-brand">
+                    <i class="fas fa-home"></i>
+                    <span>EasyRent Admin</span>
+                </div>
+                <button class="admin-sidebar-close" id="adminSidebarClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="admin-nav">
+                    <a href="#" class="admin-nav-link active" onclick="showAdminSection('dashboard')">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showAdminSection('properties')">
+                        <i class="fas fa-building"></i>
+                        <span>Properties</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showAdminSection('inquiries')">
+                        <i class="fas fa-envelope"></i>
+                        <span>Inquiries</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showAdminSection('tenants')">
+                        <i class="fas fa-users"></i>
+                        <span>Tenants</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showAdminSection('settings')">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="admin-main">
+                <div class="admin-header">
+                    <div class="admin-header-left">
+                        <button class="admin-menu-btn" id="adminMenuBtn"><i class="fas fa-bars"></i></button>
+                        <h1 id="adminTitle">Dashboard Overview</h1>
+                    </div>
+                    <div class="admin-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Admin User</span>
+                    </div>
+                </div>
+
+                <!-- Dashboard Section -->
+                <div id="dashboardSection" class="admin-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>48</h3>
+                                <p>Total Properties</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>32</h3>
+                                <p>Rented</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>16</h3>
+                                <p>Available</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>24</h3>
+                                <p>New Inquiries</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3>Recent Properties</h3>
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Property</th>
+                                            <th>Location</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Modern Apartment</td>
+                                            <td>Zamalek, Cairo</td>
+                                            <td>12,000 EGP</td>
+                                            <td><span class="badge success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cozy Studio</td>
+                                            <td>Maadi, Cairo</td>
+                                            <td>6,500 EGP</td>
+                                            <td><span class="badge danger">Rented</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spacious Villa</td>
+                                            <td>New Cairo</td>
+                                            <td>25,000 EGP</td>
+                                            <td><span class="badge success">Available</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>Recent Inquiries</h3>
+                            <div class="inquiry-list">
+                                <div class="inquiry-item">
+                                    <div class="inquiry-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="inquiry-content">
+                                        <strong>محمد أحمد</strong>
+                                        <p>Interested in Zamalek apartment</p>
+                                        <span class="inquiry-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="inquiry-item">
+                                    <div class="inquiry-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="inquiry-content">
+                                        <strong>فاطمة علي</strong>
+                                        <p>Requesting viewing for Villa</p>
+                                        <span class="inquiry-time">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="inquiry-item">
+                                    <div class="inquiry-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="inquiry-content">
+                                        <strong>أحمد حسن</strong>
+                                        <p>Question about New Capital studio</p>
+                                        <span class="inquiry-time">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Properties Section -->
+                <div id="propertiesSection" class="admin-section">
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="showAddPropertyModal()">
+                            <i class="fas fa-plus"></i>
+                            Add New Property
+                        </button>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>All Properties</h3>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search properties...">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Property Name</th>
+                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#12345</td>
+                                        <td>Modern Apartment in Zamalek</td>
+                                        <td>Zamalek, Cairo</td>
+                                        <td>Apartment</td>
+                                        <td>12,000 EGP</td>
+                                        <td><span class="badge success">Available</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#12346</td>
+                                        <td>Cozy Studio in Maadi</td>
+                                        <td>Maadi, Cairo</td>
+                                        <td>Studio</td>
+                                        <td>6,500 EGP</td>
+                                        <td><span class="badge danger">Rented</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#12347</td>
+                                        <td>Spacious Villa in New Cairo</td>
+                                        <td>New Cairo</td>
+                                        <td>Villa</td>
+                                        <td>25,000 EGP</td>
+                                        <td><span class="badge success">Available</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#12348</td>
+                                        <td>Elegant Penthouse in Giza</td>
+                                        <td>Mohandessin, Giza</td>
+                                        <td>Penthouse</td>
+                                        <td>18,000 EGP</td>
+                                        <td><span class="badge warning">Pending</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#12349</td>
+                                        <td>Beach View Apartment</td>
+                                        <td>Sidi Gaber, Alexandria</td>
+                                        <td>Apartment</td>
+                                        <td>15,000 EGP</td>
+                                        <td><span class="badge success">Available</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inquiries Section -->
+                <div id="inquiriesSection" class="admin-section">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>All Inquiries</h3>
+                            <select class="form-control">
+                                <option>All Status</option>
+                                <option>New</option>
+                                <option>In Progress</option>
+                                <option>Resolved</option>
+                            </select>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Property</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#INQ-001</td>
+                                        <td>محمد أحمد علي</td>
+                                        <td>mohamed.ahmed@email.com</td>
+                                        <td>01012345678</td>
+                                        <td>Zamalek Apartment</td>
+                                        <td>Nov 21, 2025</td>
+                                        <td><span class="badge warning">New</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INQ-002</td>
+                                        <td>فاطمة علي حسن</td>
+                                        <td>fatma.ali@email.com</td>
+                                        <td>01098765432</td>
+                                        <td>New Cairo Villa</td>
+                                        <td>Nov 20, 2025</td>
+                                        <td><span class="badge info">In Progress</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INQ-003</td>
+                                        <td>أحمد حسن محمد</td>
+                                        <td>ahmed.hassan@email.com</td>
+                                        <td>01123456789</td>
+                                        <td>New Capital Studio</td>
+                                        <td>Nov 19, 2025</td>
+                                        <td><span class="badge success">Resolved</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INQ-004</td>
+                                        <td>نور الدين سعيد</td>
+                                        <td>nour.saeed@email.com</td>
+                                        <td>01234567890</td>
+                                        <td>Alexandria Apartment</td>
+                                        <td>Nov 18, 2025</td>
+                                        <td><span class="badge warning">New</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tenants Section -->
+                <div id="tenantsSection" class="admin-section">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>Current Tenants</h3>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search tenants...">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tenant Name</th>
+                                        <th>Property</th>
+                                        <th>Location</th>
+                                        <th>Rent</th>
+                                        <th>Lease Start</th>
+                                        <th>Lease End</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>سارة محمود</td>
+                                        <td>Maadi Studio</td>
+                                        <td>Maadi, Cairo</td>
+                                        <td>6,500 EGP</td>
+                                        <td>Jan 1, 2025</td>
+                                        <td>Dec 31, 2025</td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>خالد عبد الله</td>
+                                        <td>Giza Penthouse</td>
+                                        <td>Mohandessin, Giza</td>
+                                        <td>18,000 EGP</td>
+                                        <td>Mar 1, 2025</td>
+                                        <td>Feb 28, 2026</td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ليلى إبراهيم</td>
+                                        <td>Heliopolis Apartment</td>
+                                        <td>Heliopolis, Cairo</td>
+                                        <td>10,000 EGP</td>
+                                        <td>Jun 1, 2025</td>
+                                        <td>May 31, 2026</td>
+                                        <td class="actions">
+                                            <button class="action-btn view" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn edit" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="settingsSection" class="admin-section">
+                    <div class="settings-tabs">
+                        <button class="tab-btn active" onclick="showSettingsTab('general')">General</button>
+                        <button class="tab-btn" onclick="showSettingsTab('user-management')">User Management</button>
+                        <button class="tab-btn" onclick="showSettingsTab('notifications')">Notifications</button>
+                        <button class="tab-btn" onclick="showSettingsTab('security')">Security</button>
+                    </div>
+
+                    <!-- General Settings -->
+                    <div id="generalTab" class="settings-content active">
+                        <div class="dashboard-card">
+                            <h3>General Settings</h3>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label>Site Title</label>
+                                    <input type="text" class="form-control" value="EasyRent - Find Your Perfect Home in Egypt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Site Description</label>
+                                    <textarea class="form-control" rows="3" placeholder="Enter site description...">Egypt's premier property rental platform, connecting landlords with quality tenants since 2020.</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Email</label>
+                                    <input type="email" class="form-control" value="info@easyrent.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Phone</label>
+                                    <input type="tel" class="form-control" value="+201110511819">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" value="Cairo, Egypt">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- User Management -->
+                    <div id="userManagementTab" class="settings-content">
+                        <div class="dashboard-card">
+                            <h3>User Management</h3>
+                            <div class="user-stats">
+                                <div class="stat-item">
+                                    <h4>Total Users</h4>
+                                    <span>2,450</span>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Active Users</h4>
+                                    <span>2,120</span>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Admins</h4>
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-outline">Export User Data</button>
+                                <button class="btn btn-outline">Manage Admin Roles</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div id="notificationsTab" class="settings-content">
+                        <div class="dashboard-card">
+                            <h3>Notification Settings</h3>
+                            <form class="settings-form">
+                                <div class="form-group checkbox-group">
+                                    <label>
+                                        <input type="checkbox" checked> Email new property inquiries
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label>
+                                        <input type="checkbox" checked> Email viewing requests
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label>
+                                        <input type="checkbox"> Email daily statistics
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label>
+                                        <input type="checkbox" checked> SMS notifications for urgent inquiries
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Template</label>
+                                    <select class="form-control">
+                                        <option>Default Template</option>
+                                        <option>Custom Template</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Settings</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Security -->
+                    <div id="securityTab" class="settings-content">
+                        <div class="dashboard-card">
+                            <h3>Security Settings</h3>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label>Change Admin Password</label>
+                                    <input type="password" class="form-control" placeholder="Current password" id="currentAdminPassword">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="New password" id="newAdminPassword">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Confirm new password" id="confirmAdminPassword">
+                                </div>
+                                <button type="submit" class="btn btn-primary" onclick="changeAdminPassword(event)">Change Password</button>
+                            </form>
+                            <hr>
+                            <div class="security-options">
+                                <h4>Two-Factor Authentication</h4>
+                                <div class="form-group checkbox-group">
+                                    <label>
+                                        <input type="checkbox" disabled> Enable 2FA for admin accounts
+                                        <small class="text-muted">(Coming Soon)</small>
+                                    </label>
+                                </div>
+                                <hr>
+                                <h4>Data Protection</h4>
+                                <button class="btn btn-outline">Backup Database</button>
+                                <button class="btn btn-outline">Export Logs</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profile Page -->
+    <section id="profile" class="page admin-page">
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-brand">
+                    <i class="fas fa-user"></i>
+                    <span>EasyRent User</span>
+                </div>
+                <button class="admin-sidebar-close" onclick="document.querySelector('#profile .admin-sidebar').classList.remove('active');">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="admin-nav">
+                    <a href="#" onclick="showPage('user-dashboard'); showUserSection('profile');">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" onclick="showPage('user-dashboard'); showUserSection('inquiries');">
+                        <i class="fas fa-envelope"></i>
+                        <span>My Inquiries</span>
+                    </a>
+                    <a href="#" onclick="showPage('user-dashboard'); showUserSection('saved');">
+                        <i class="fas fa-heart"></i>
+                        <span>Saved Properties</span>
+                    </a>
+                    <a href="#" onclick="showPage('user-dashboard'); showUserSection('applications');">
+                        <i class="fas fa-file-alt"></i>
+                        <span>My Applications</span>
+                    </a>
+                    <a href="#" onclick="userLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="admin-main">
+                <div class="admin-header">
+                    <div class="admin-header-left">
+                        <button class="admin-menu-btn" onclick="document.querySelector('#profile .admin-sidebar').classList.toggle('active');"><i class="fas fa-bars"></i></button>
+                        <h1>My Profile</h1>
+                    </div>
+                    <div class="admin-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="profileUserNameDisplay">User</span>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Personal Information</h3>
+                        <form id="profileFormPage" onsubmit="updateProfile(event)">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-control" id="editNameProfile" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" id="editEmailProfile" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" id="editPhoneProfile" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select class="form-control" id="editLocationProfile">
+                                    <option value="">Select Location</option>
+                                    <option>Cairo</option>
+                                    <option>Giza</option>
+                                    <option>Alexandria</option>
+                                    <option>Mansoura</option>
+                                    <option>New Capital</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>District</label>
+                                <input type="text" class="form-control" id="editDistrictProfile" placeholder="e.g., Zamalek">
+                            </div>
+                            <div class="form-group">
+                                <label>Full Address</label>
+                                <input type="text" class="form-control" id="editAddressProfile" placeholder="Street address">
+                            </div>
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea class="form-control" rows="4" id="editBioProfile" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                            <hr style="margin: 20px 0; border: none; border-top: 1px solid #e5e7eb;">
+                            <h4>Change Password</h4>
+                            <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 16px;">Leave blank if you don't want to change your password</p>
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" class="form-control" id="currentPasswordProfile" placeholder="Enter current password">
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" class="form-control" id="newPasswordProfile" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <input type="password" class="form-control" id="confirmNewPasswordProfile" placeholder="Confirm new password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Dashboard -->
+    <section id="user-dashboard" class="page admin-page">
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-brand">
+                    <i class="fas fa-user"></i>
+                    <span>EasyRent User</span>
+                </div>
+                <button class="admin-sidebar-close" id="userSidebarClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="admin-nav">
+                    <a href="#" class="admin-nav-link active" onclick="showUserSection('profile')">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showUserSection('inquiries')">
+                        <i class="fas fa-envelope"></i>
+                        <span>My Inquiries</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showUserSection('saved')">
+                        <i class="fas fa-heart"></i>
+                        <span>Saved Properties</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="showUserSection('applications')">
+                        <i class="fas fa-file-alt"></i>
+                        <span>My Applications</span>
+                    </a>
+                    <a href="#" class="admin-nav-link" onclick="userLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="admin-main">
+                <div class="admin-header">
+                    <div class="admin-header-left">
+                        <button class="admin-menu-btn" id="userMenuBtn"><i class="fas fa-bars"></i></button>
+                        <h1 id="userTitle">My Profile</h1>
+                    </div>
+                    <div class="admin-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">User</span>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div id="profileSection" class="admin-section active">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3>Personal Information</h3>
+                            <form id="profileForm" onsubmit="updateProfile(event)">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" class="form-control" id="editName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-control" id="editEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" class="form-control" id="editPhone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <select class="form-control">
+                                        <option value="">Select Location</option>
+                                        <option>Cairo</option>
+                                        <option>Giza</option>
+                                        <option>Alexandria</option>
+                                        <option>Mansoura</option>
+                                        <option>New Capital</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>District</label>
+                                    <input type="text" class="form-control" placeholder="e.g., Zamalek">
+                                </div>
+                                <div class="form-group">
+                                    <label>Full Address</label>
+                                    <input type="text" class="form-control" placeholder="Street address">
+                                </div>
+                                <div class="form-group">
+                                    <label>Bio</label>
+                                    <textarea class="form-control" rows="4" id="editBio" placeholder="Tell us about yourself..."></textarea>
+                                </div>
+                                <hr style="margin: 20px 0; border: none; border-top: 1px solid #e5e7eb;">
+                                <h4>Change Password</h4>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 16px;">Leave blank if you don't want to change your password</p>
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm new password">
+                                </div>
+                            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+                        </form>
+        </div>
+    </div>
+
+    <!-- Viewing Request Modal -->
+    <div id="viewingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request a Viewing</h2>
+                <button class="modal-close" onclick="closeModal('viewingModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-body">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="01XXXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time</label>
+                    <select class="form-control" required>
+                        <option value="">Select Time</option>
+                        <option>9:00 AM - 11:00 AM</option>
+                        <option>11:00 AM - 1:00 PM</option>
+                        <option>1:00 PM - 3:00 PM</option>
+                        <option>3:00 PM - 5:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes (Optional)</label>
+                    <textarea class="form-control" rows="3" placeholder="Any specific requirements..."></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('viewingModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitViewing()">Request Viewing</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Modal -->
+    <div id="inquiryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Send an Inquiry</h2>
+                <button class="modal-close" onclick="closeModal('inquiryModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-body">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="01XXXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" rows="5" placeholder="Your question or inquiry..." required></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('inquiryModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitInquiry()">Send Inquiry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
